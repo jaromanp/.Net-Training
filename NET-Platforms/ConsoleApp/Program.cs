@@ -6,10 +6,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
     {
         static void Main(string[] args)
         {
-            string name;
-            Console.WriteLine("Please enter your username");
-            name = Console.ReadLine();
-            Console.WriteLine($"Hello,{name}");
+            Console.WriteLine("Hello World!");
         }
     }
 }
