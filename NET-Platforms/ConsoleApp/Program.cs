@@ -1,4 +1,5 @@
 ﻿using System;
+using ClassLibrary;
 
 namespace MyApp // Note: actual namespace depends on the project name.
 {
@@ -6,7 +7,11 @@ namespace MyApp // Note: actual namespace depends on the project name.
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            string name;
+            Console.WriteLine("Please enter your username");
+            name = Console.ReadLine();
+            string output = ConcatLibrary.GetHelloWorld(name);
+            Console.WriteLine(output);
         }
     }
 }
