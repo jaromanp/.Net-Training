@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using ClassLibrary;
 
 namespace WindowsFormsApp
 {
@@ -25,6 +27,19 @@ namespace WindowsFormsApp
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (UserName.Text.Equals(""))
+            {
+                MessageBox.Show("Please provide a username");
+            }
+            else
+            {
+                string output = ConcatLibrary.GetHelloWorld(UserName.Text);
+                MessageBox.Show(output);
+            }
         }
     }
 }

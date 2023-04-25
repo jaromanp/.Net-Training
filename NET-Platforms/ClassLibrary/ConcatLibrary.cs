@@ -6,7 +6,7 @@ namespace ClassLibrary
     {
         public static string GetHelloWorld(string userName)
         {
-            return $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} Hello, {userName}";
+            return $"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")} Hello, {userName}!";
         }
 
     }
