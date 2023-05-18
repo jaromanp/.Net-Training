@@ -76,12 +76,10 @@ namespace FileSystemVisitor
             switch (filterType)
             {
                 case 1:
-                    visitor = new FileSystemVisitor(@"C:\" + route, s => Path.GetExtension(s) == filterBy);
-                    //return visitor.GetFileSystemEntries(); 
+                    visitor = new FileSystemVisitor(@"C:\" + route, s => Path.GetExtension(s) == filterBy);                    
                     break;
                 case 2:
                     visitor = new FileSystemVisitor(@"C:\" + route, s => Path.GetFileName(s).Contains(filterBy));
-                    //return visitor.GetFileSystemEntries();
                     break;
                 case 3:
                     DateTime date = DateTime.Now;
@@ -94,8 +92,7 @@ namespace FileSystemVisitor
                         Console.WriteLine("Wrong input");
                     }
                     visitor = new FileSystemVisitor(@"C:\" + route, s => File.GetCreationTime(s) > date);
-                    break;
-                //return visitor.GetFileSystemEntries();
+                    break;                
                 default:
                     visitor = new FileSystemVisitor(@"C:\" + route);
                     break;
