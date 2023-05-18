@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 
 namespace FileSystemVisitor
 {
@@ -17,28 +15,77 @@ namespace FileSystemVisitor
             _filter = filter ?? (s => true);
         }
 
-        public IEnumerable<string> GetFileSystemEntries()
+        public IEnumerable<string> Traverse()
         {
-            return GetFileSystemEntries(_root);
+            OnStart(_root);
+            foreach (var file in TraverseDirectory(_root))
+            {
+                if (_filter(file))
+                {
+                    OnFilteredFileFound(file);
+                    yield return file;
+                }
+                else
+                {
+                    OnFileFound(file);
+                }
+            }
+            OnFinish(_root);
         }
 
-        private IEnumerable<string> GetFileSystemEntries(string path)
+        private IEnumerable<string> TraverseDirectory(string directory)
         {
-            foreach (var entry in Directory.GetFileSystemEntries(path))
+            foreach (var file in Directory.GetFiles(directory))
             {
-                if (_filter(entry))
-                {
-                    yield return entry;
-                }
+                yield return file;
+            }
 
-                if (Directory.Exists(entry))
+            foreach (var subDirectory in Directory.GetDirectories(directory))
+            {
+                OnDirectoryFound(subDirectory);
+                foreach (var file in TraverseDirectory(subDirectory))
                 {
-                    foreach (var subEntry in GetFileSystemEntries(entry))
-                    {
-                        yield return subEntry;
-                    }
+                    yield return file;
                 }
             }
         }
+
+        public event Action<string> FileFound = delegate { };
+        public event Action<string> DirectoryFound = delegate { };
+        public event Action<string> FilteredFileFound = delegate { };
+        public event Action<string> FilteredDirectoryFound = delegate { };
+        public event Action<string> Start = delegate { };
+        public event Action<string> Finish = delegate { };
+
+        protected virtual void OnFileFound(string path)
+        {
+            FileFound(path);
+        }
+
+        protected virtual void OnDirectoryFound(string path)
+        {
+            DirectoryFound(path);
+        }
+
+        protected virtual void OnFilteredFileFound(string path)
+        {
+            FilteredFileFound(path);
+        }
+
+        protected virtual void OnFilteredDirectoryFound(string path)
+        {
+            FilteredDirectoryFound(path);
+        }
+
+        protected virtual void OnStart(string path)
+        {
+            Start(path);
+        }
+
+        protected virtual void OnFinish(string path)
+        {
+            Finish(path);
+        }
     }
 }
+
