@@ -102,7 +102,7 @@ namespace FileSystemVisitor
             visitor.FileFound += path => Console.WriteLine($"File found: {path}");
             visitor.DirectoryFound += path => Console.WriteLine($"Directory found: {path}");
             visitor.FilteredFileFound += path => Console.WriteLine($"Filtered file found: {path}");
-            visitor.FilteredDirectoryFound += path => Console.WriteLine($"Filtered directory found: {path}");
+            visitor.FilteredDirectoryFound += path => Console.WriteLine($"Filtered directory found: {path}");            
             var files = visitor.Traverse().ToList();
             Console.WriteLine($"Total files found: {files.Count}");
             foreach (var file in files) Console.WriteLine(file);

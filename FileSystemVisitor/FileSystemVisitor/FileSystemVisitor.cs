@@ -8,11 +8,13 @@ namespace FileSystemVisitor
     {
         private readonly Func<string, bool> _filter;
         private readonly string _root;
+        private readonly Func<string, bool> _exclude;
 
-        public FileSystemVisitor(string root, Func<string, bool> filter = null)
+        public FileSystemVisitor(string root, Func<string, bool> filter = null, Func<string, bool> exclude = null)
         {
             _root = root;
             _filter = filter ?? (s => true);
+            _exclude = exclude ?? (s => false);
         }
 
         public IEnumerable<string> Traverse()
@@ -48,6 +50,11 @@ namespace FileSystemVisitor
                     yield return file;
                 }
             }
+        }
+
+        public FileSystemVisitor Exclude(Func<string, bool> predicate)
+        {
+            return new FileSystemVisitor(_root, _filter, s => _exclude(s) || predicate(s));
         }
 
         public event Action<string> FileFound = delegate { };
