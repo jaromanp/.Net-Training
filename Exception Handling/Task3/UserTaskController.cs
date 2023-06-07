@@ -1,4 +1,6 @@
-﻿using Task3.DoNotChange;
+﻿using System;
+using Task3.DoNotChange;
+using Task3.Exeptions;
 
 namespace Task3
 {
@@ -26,17 +28,18 @@ namespace Task3
         private string GetMessageForModel(int userId, string description)
         {
             var task = new UserTask(description);
-            int result = _taskService.AddTaskForUser(userId, task);
-            if (result == -1)
-                return "Invalid userId";
 
-            if (result == -2)
-                return "User not found";
+            try
+            {
+                _taskService.AddTaskForUser(userId, task);
+                return null;
+            }
+            catch (UserTaskException ex)
+            {
+                Console.WriteLine(ex.Message);
+                return ex.Message;
+            }
 
-            if (result == -3)
-                return "The task already exists";
-
-            return null;
         }
     }
 }
