@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomAttributeDemo", "CustomAttributeDemo.csproj", "{78EA82B6-6659-45E1-90D8-BD94931AC2A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomAttributeDemo", "CustomAttributeDemo.csproj", "{78EA82B6-6659-45E1-90D8-BD94931AC2A3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7CA22DF7-B886-422F-BEF2-D159D288AB2F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileConfigurationProvider", "..\FileConfigurationProvider\FileConfigurationProvider.csproj", "{F4E4362E-EE2E-4312-8901-878379EBE13F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigurationManagerConfigurationProvider", "..\ConfigurationManagerConfigurationProvider\ConfigurationManagerConfigurationProvider.csproj", "{05E27660-D275-4D9F-9F9A-F254137FE275}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfigurationProvider.Abstractions", "..\ConfigurationProvider.Abstractions\ConfigurationProvider.Abstractions.csproj", "{FB0DC643-0229-4515-AAB6-0EAF5B039C67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +23,18 @@ Global
 		{78EA82B6-6659-45E1-90D8-BD94931AC2A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78EA82B6-6659-45E1-90D8-BD94931AC2A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78EA82B6-6659-45E1-90D8-BD94931AC2A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4E4362E-EE2E-4312-8901-878379EBE13F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4E4362E-EE2E-4312-8901-878379EBE13F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4E4362E-EE2E-4312-8901-878379EBE13F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4E4362E-EE2E-4312-8901-878379EBE13F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05E27660-D275-4D9F-9F9A-F254137FE275}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05E27660-D275-4D9F-9F9A-F254137FE275}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05E27660-D275-4D9F-9F9A-F254137FE275}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05E27660-D275-4D9F-9F9A-F254137FE275}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB0DC643-0229-4515-AAB6-0EAF5B039C67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB0DC643-0229-4515-AAB6-0EAF5B039C67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB0DC643-0229-4515-AAB6-0EAF5B039C67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB0DC643-0229-4515-AAB6-0EAF5B039C67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

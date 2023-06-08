@@ -37,7 +37,7 @@ namespace CustomAttributeDemo
             try
             {
                 mySettings.MyIntSetting = int.Parse(Console.ReadLine());
-            } catch (InvalidCastException ex)
+            } catch (FormatException ex)
             {
                 Console.WriteLine($"{ex.Message}");
             }
@@ -46,9 +46,8 @@ namespace CustomAttributeDemo
             {
                 mySettings.MyTimeSpanSetting = TimeSpan.FromMinutes(int.Parse(Console.ReadLine()));
             }
-            catch (InvalidCastException ex)
+            catch (FormatException ex)
             {
-
                 Console.WriteLine($"{ex.Message}");
             }
 
