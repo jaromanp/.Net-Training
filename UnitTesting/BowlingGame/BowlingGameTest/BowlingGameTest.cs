@@ -4,29 +4,31 @@ namespace BowlingGameTest
     {
         private Game g;
 
+        private void rollMany(int shoots, int pins)
+        {
+            for (int i = 0; i < shoots; i++)
+            {
+                g.roll(pins);
+            }
+        }
+
         [SetUp]
         public void Setup()
         {
             g = new Game();
         }
 
-        [Test]
-        public void testInitialGame()
+        [TestCase(20, 0)]
+        public void testInitialGame(int shoots, int pins)
         {            
-            for (int i = 0; i < 20; i++)
-            {
-                g.roll(0);
-            }
+            rollMany(shoots, pins);
             Assert.That(g.score(), Is.EqualTo(0));
         }
 
-        [Test]
-        public void testAllRolls()
+        [TestCase(20,1)]
+        public void testAllRolls(int shoots, int pins)
         {
-            for (int i = 0; i < 20; i++)
-            {
-                g.roll(1);
-            }
+            rollMany(shoots,pins);
             Assert.That(g.score(), Is.EqualTo(20));
         }
     }
