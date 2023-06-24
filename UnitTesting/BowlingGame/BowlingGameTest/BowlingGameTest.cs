@@ -62,5 +62,12 @@ namespace BowlingGameTest
             Assert.That(g.score(), Is.EqualTo(expectedScore));
         }
 
+        [TestCase(12, 10, 300)]
+        public void PerfectGameTest(int shoots, int pins, int expectedScore)
+        {
+            rollMany(shoots, pins);
+            Assert.That(g.score(), Is.EqualTo(expectedScore));
+        }
+
     }
 }
