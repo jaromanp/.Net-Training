@@ -43,5 +43,20 @@
         {
             return _rolls[frameIndex] + _rolls[frameIndex + 1] == 10;
         }
+
+        private int sumOfBallsInFrame(int frameIndex)
+        {
+            return _rolls[frameIndex] + _rolls[frameIndex];
+        }
+
+        private int spareBonus(int frameIndex)
+        {
+            return _rolls[frameIndex + 2];
+        }
+
+        private int strikeBonus(int frameIndex)
+        {
+            return _rolls[frameIndex + 1] + _rolls[frameIndex + 2];
+        }
     }
 }
