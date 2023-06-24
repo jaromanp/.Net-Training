@@ -18,6 +18,11 @@ namespace BowlingGameTest
             g.roll(5);
         }
 
+        private void rollStrike()
+        {
+            g.roll(10);
+        }
+
         [SetUp]
         public void Setup()
         {
@@ -50,7 +55,7 @@ namespace BowlingGameTest
         [TestCase(16, 0, 24)]
         public void OneStrikeReturnCorrectScore(int shoots, int pins, int expectedScore)
         {
-            g.roll(10);
+            rollStrike();
             g.roll(3);
             g.roll(4);
             rollMany(shoots, pins);

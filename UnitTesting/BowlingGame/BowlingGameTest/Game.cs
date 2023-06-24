@@ -20,19 +20,19 @@
             int frameIndex = 0;
             for (int frame = 0; frame < 10; frame++)
             {
-                if (_rolls[frameIndex] == 10) //This would be a strike
+                if (isStrike(frameIndex)) 
                 {
-                    score += 10 + _rolls[frameIndex + 1] + _rolls[frameIndex + 2];
+                    score += 10 + strikeBonus(frameIndex);
                     frameIndex++;
                 }
                 else if (isSpare(frameIndex))
                 {
-                    score += 10 + _rolls[frameIndex + 2];
+                    score += 10 + spareBonus(frameIndex);
                     frameIndex += 2;
                 }
                 else
                 {
-                    score += _rolls[frameIndex] + _rolls[frameIndex + 1];
+                    score += sumOfBallsInFrame(frameIndex);
                     frameIndex += 2;
                 }
             }
@@ -44,9 +44,14 @@
             return _rolls[frameIndex] + _rolls[frameIndex + 1] == 10;
         }
 
+        private Boolean isStrike(int frameIndex)
+        {
+            return _rolls[frameIndex] == 10;
+        }
+
         private int sumOfBallsInFrame(int frameIndex)
         {
-            return _rolls[frameIndex] + _rolls[frameIndex];
+            return _rolls[frameIndex] + _rolls[frameIndex + 1];
         }
 
         private int spareBonus(int frameIndex)
