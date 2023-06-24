@@ -1,4 +1,4 @@
-namespace CalcStatsTest
+namespace CalcStats
 {
     public class Tests
     {
@@ -7,10 +7,14 @@ namespace CalcStatsTest
         {
         }
 
-        [Test]
-        public void Test1()
+        [TestCase(new int[] { 6, 9, 15, -2, 92, 11 }, -2)]
+        public void ShouldReturnMinimunValue(int[] numbers, int expected)
         {
-            Assert.Pass();
+            CalcStat stat = new CalcStat(numbers);
+
+            int minValue = stat.MinValue();
+
+            Assert.That(minValue == expected);
         }
     }
 }
