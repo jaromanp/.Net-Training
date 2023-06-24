@@ -34,5 +34,10 @@
             }
             return maxValue;
         }
+
+        public int Length()
+        {
+            return this.numbers.Length;
+        }
     }
 }
