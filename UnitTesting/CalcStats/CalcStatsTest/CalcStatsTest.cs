@@ -8,7 +8,8 @@ namespace CalcStats
         }
 
         [TestCase(new int[] { 6, 9, 15, -2, 92, 11 }, -2)]
-        public void ShouldReturnMinimunValue(int[] numbers, int expected)
+        [TestCase(new int[] { 3, 1, 20, 100, 5, 25 }, 1)]
+        public void ShouldReturnMinimumValue(int[] numbers, int expected)
         {
             CalcStat stat = new CalcStat(numbers);
 
