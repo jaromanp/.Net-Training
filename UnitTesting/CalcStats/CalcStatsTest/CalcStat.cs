@@ -22,9 +22,17 @@
             return minValue;
         }
 
-        internal int MaxValue()
+        public int MaxValue()
         {
-            throw new NotImplementedException();
+            int maxValue = this.numbers[0];
+            for (int i = 1; i < numbers.Length; i++)
+            {
+                if (this.numbers[i] > maxValue)
+                {
+                    maxValue = this.numbers[i];
+                }
+            }
+            return maxValue;
         }
     }
 }

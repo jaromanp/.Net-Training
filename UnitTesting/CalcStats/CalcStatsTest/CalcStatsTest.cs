@@ -28,5 +28,17 @@ namespace CalcStats
 
             Assert.That(maxValue == expected);
         }
+
+        [TestCase(new int[] { 3, 11, 99, -2, 88, 45 }, 6)]
+        [TestCase(new int[] { -32, 43, 20, -101 }, 4)]
+        [TestCase(new int[] { }, 0)]
+        public void ShouldReturnTheNumberOfElements(int[] numbers, int expected)
+        {
+            CalcStat stat = new CalcStat(numbers);
+
+            int sequenceLength = stat.Length();
+
+            Assert.That(sequenceLength == expected);
+        }
     }
 }
