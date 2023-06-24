@@ -41,12 +41,12 @@ namespace CalcStats
             Assert.That(sequenceLength == expected);
         }
 
-        [TestCase(new int[] { 6, 9, 15, -2, 92, 11 }, 18.166666)]
+        [TestCase(new int[] { 6, 9, 15, -2, 92, 11 }, 21.833333333333332)]
         public void ShouldReturnAverage(int[] numbers, double expected)
         {
             CalcStat stat = new CalcStat(numbers);
 
-            int averageValue = stat.Average();
+            double averageValue = stat.Average();
 
             Assert.That(averageValue == expected);
         }

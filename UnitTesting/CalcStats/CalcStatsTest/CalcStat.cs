@@ -39,5 +39,17 @@
         {
             return this.numbers.Length;
         }
+
+        public double Average()
+        {
+            int sum = 0;
+            int length = this.numbers.Length;
+            for(int i=0; i<this.numbers.Length; i++)
+            {
+                sum += this.numbers[i];
+            }
+            double average = sum / (double)length;
+            return average;
+        }
     }
 }
