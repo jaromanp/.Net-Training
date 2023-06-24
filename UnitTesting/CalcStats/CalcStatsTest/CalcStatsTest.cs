@@ -17,5 +17,16 @@ namespace CalcStats
 
             Assert.That(minValue == expected);
         }
+
+        [TestCase(new int[] { 3, 11, 99, -2, 88, 45 }, 99)]
+        [TestCase(new int[] { -32, 43, 20, -101}, 43)]
+        public void ShouldReturnMaximumValue(int[] numbers, int expected)
+        {
+            CalcStat stat = new CalcStat(numbers);
+
+            int maxValue = stat.MaxValue();
+
+            Assert.That(maxValue == expected);
+        }
     }
 }

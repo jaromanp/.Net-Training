@@ -21,5 +21,10 @@
             }
             return minValue;
         }
+
+        internal int MaxValue()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
