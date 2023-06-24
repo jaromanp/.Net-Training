@@ -20,7 +20,7 @@
             int frameIndex = 0;
             for (int frame = 0; frame < 10; frame++)
             {
-                if (_rolls[frameIndex] + _rolls[frameIndex + 1] == 10) //This would be a spare
+                if (isSpare(frameIndex)) 
                 {
                     score += 10 + _rolls[frameIndex + 2];
                     frameIndex += 2;
@@ -32,6 +32,11 @@
                 }
             }
             return score;
-        }        
+        }
+
+        private Boolean isSpare(int frameIndex)
+        {
+            return _rolls[frameIndex] + _rolls[frameIndex + 1] == 10;
+        }
     }
 }

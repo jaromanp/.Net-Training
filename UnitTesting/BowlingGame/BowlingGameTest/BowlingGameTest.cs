@@ -12,6 +12,12 @@ namespace BowlingGameTest
             }
         }
 
+        private void rollSpare()
+        {
+            g.roll(5);
+            g.roll(5);
+        }
+
         [SetUp]
         public void Setup()
         {
@@ -20,23 +26,22 @@ namespace BowlingGameTest
 
         [TestCase(20, 0)]
         public void GutterInAllShootsReturnNoScore(int shoots, int pins)
-        {            
+        {
             rollMany(shoots, pins);
             Assert.That(g.score(), Is.EqualTo(0));
         }
 
-        [TestCase(20,1)]
+        [TestCase(20, 1)]
         public void AllShootsOnePinReturnNumberOfShootsAsScore(int shoots, int pins)
         {
-            rollMany(shoots,pins);
+            rollMany(shoots, pins);
             Assert.That(g.score(), Is.EqualTo(20));
         }
 
         [Test]
         public void OneSpareShouldReturnTheExtraScore()
         {
-            g.roll(5);
-            g.roll(5);
+            rollSpare();
             g.roll(3);
             rollMany(17, 0);
             Assert.That(g.score(), Is.EqualTo(16));
