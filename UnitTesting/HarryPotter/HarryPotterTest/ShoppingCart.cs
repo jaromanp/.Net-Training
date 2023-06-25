@@ -15,12 +15,21 @@
             double price = 0;
             int differentBooks = GetNumberOfDifferentBooks();
 
-            foreach (var book in _books.Keys.ToList())
+            while (differentBooks > 0)
             {
-                if (_books[book] > 0)
+                // Let's calculate the price for the biggest group of different book possible 
+                price += differentBooks * 8 * (1 - GetDiscount(differentBooks));
+                //then we would ckeck if there's more units available to create groups
+                foreach (var book in _books.Keys.ToList())
                 {
-                    price += _books[book] * 8 * (1 - GetDiscount(differentBooks));
-                }
+                    if (_books[book] > 0)
+                    {
+                        //Reduce the units of the books that we already use to create a group
+                        _books[book]--;
+                    }
+                    //Calculate again the number of different books
+                    differentBooks = GetNumberOfDifferentBooks();
+                } 
             }
             return price;
         }
