@@ -94,7 +94,7 @@ namespace HarryPotterLibrary
             var potterBooks = new ShoppingCart(books);
             var price = potterBooks.GetPrice();
 
-            Assert.That(price, Is.EqualTo(16));
+            Assert.That(price, Is.EqualTo((16 * (1 - 0.05) + 8)));
         }
     }
 }

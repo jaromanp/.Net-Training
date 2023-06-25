@@ -12,14 +12,17 @@
 
         public double GetPrice()
         {
-            int price = 0;
-            foreach (var book in _books.Keys.ToList()) {
+            double price = 0;
+            int differentBooks = GetNumberOfDifferentBooks();
+
+            foreach (var book in _books.Keys.ToList())
+            {
                 if (_books[book] > 0)
                 {
-                    price += _books[book] * 8;
+                    price += _books[book] * 8 * (1 - GetDiscount(differentBooks));
                 }
             }
-            return price;            
+            return price;
         }
 
         public double GetDiscount(int differentBooks)
