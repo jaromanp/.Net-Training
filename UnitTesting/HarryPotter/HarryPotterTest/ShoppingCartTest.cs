@@ -119,6 +119,24 @@ namespace HarryPotterLibrary
             Assert.That(price, Is.EqualTo(expected));
         }
 
+        [Test]
+        public void BuyingAllBooksInDifferentQuantities()
+        {
+            var books = new Dictionary<BookType, int>
+            {
+                {BookType.PhilosophersStone, 2},
+                {BookType.ChamberOfSecrets, 2},
+                {BookType.PrisonerOfAzkaban, 2},
+                {BookType.GobletOfFire, 1},
+                {BookType.OrderOfPhoenix, 1},
+            };
+
+            var potterBooks = new ShoppingCart(books);
+            double price = potterBooks.GetPrice();
+
+            Assert.That(price, Is.EqualTo(51.60)); ;
+        }
+
         [TestCase(1, 0)]
         [TestCase(2, 0.05)]
         [TestCase(3, 0.1)]
