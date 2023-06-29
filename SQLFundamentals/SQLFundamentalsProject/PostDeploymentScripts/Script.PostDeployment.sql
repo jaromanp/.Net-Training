@@ -10,6 +10,6 @@ Post-Deployment Script Template
 --------------------------------------------------------------------------------------
 */
 :r .\DataPopulation\Person.sql
-:r .\DataPopulation\Employee.sql
 :r .\DataPopulation\Address.sql
+:r .\DataPopulation\Employee.sql
 :r .\DataPopulation\Company.sql

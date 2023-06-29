@@ -14,29 +14,27 @@ SET NOCOUNT ON;
 BEGIN TRANSACTION
 
     DECLARE @person AS TABLE
-    (
-        [Id] INT, 
+    (         
         [FirstName] NVARCHAR(50), 
         [LastName] NVARCHAR(50)
     )
-    INSERT INTO @person(Id, FirstName, LastName)
+    INSERT INTO @person(FirstName, LastName)
     VALUES
-        (1,'Alex', 'Ford'),
-        (2,'Maya', 'Perez'),
-        (3,'Jhon', 'Oswell'),
-        (4,'Natasha', 'Romanof'),
-        (5,'Steven', 'Rogers')
+        ('Alex', 'Ford'),
+        ('Maya', 'Perez'),
+        ('Jhon', 'Oswell'),
+        ('Natasha', 'Romanof'),
+        ('Steven', 'Rogers')
     MERGE dbo.Person AS target
-    USING (SELECT Id, FirstName, LastName FROM @person) AS source (Id, FirstName, LastName)
-    ON (target.Id = source.Id)
+    USING (SELECT FirstName, LastName FROM @person) AS source (FirstName, LastName)
+    ON (target.FirstName = source.FirstName AND target.LastName = source.LastName)
     WHEN MATCHED THEN
         UPDATE
-        SET
-            Id = source.Id,
+        SET            
             FirstName = source.FirstName,
             LastName = source.LastName
         WHEN NOT MATCHED THEN
-            INSERT (Id, FirstName, LastName)
-            VALUES (source.Id, source.FirstName, source.LastName);
+            INSERT (FirstName, LastName)
+            VALUES (source.FirstName, source.LastName);
 
 COMMIT TRANSACTION;

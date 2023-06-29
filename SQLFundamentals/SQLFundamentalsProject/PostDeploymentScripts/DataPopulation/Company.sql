@@ -15,28 +15,26 @@ SET NOCOUNT ON;
 BEGIN TRANSACTION
 
     DECLARE @company AS TABLE
-    (
-        [Id] INT, 
+    (        
         [Name] NVARCHAR(20), 
         [AddressId] INT 
     )
-    INSERT INTO @company(Id, Name, AddressId)
+    INSERT INTO @company(Name, AddressId)
     VALUES
-        (1,'Google', 2),
-        (2,'Microsoft', 3),
-        (3,'Apple', 1),
-        (4,'Tesla', 5)
+        ('Google', 2),
+        ('Microsoft', 3),
+        ('Apple', 1),
+        ('Tesla', 4)
     MERGE dbo.Company AS target
-    USING (SELECT Id, Name, AddressId FROM @company) AS source (Id, Name, AddressId)
-    ON (target.Id = source.Id)
+    USING (SELECT Name, AddressId FROM @company) AS source (Name, AddressId)
+    ON (target.Name = source.Name)
     WHEN MATCHED THEN
         UPDATE
-        SET
-            Id = source.Id,
+        SET            
             Name = source.Name,
             AddressId = source.AddressId
         WHEN NOT MATCHED THEN
-            INSERT (Id, Name, AddressId)
-            VALUES (source.Id, source.Name, source.AddressId);
+            INSERT (Name, AddressId)
+            VALUES (source.Name, source.AddressId);
 
 COMMIT TRANSACTION;
