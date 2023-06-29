@@ -61,6 +61,7 @@
     <Folder Include="PostDeploymentScripts" />
     <Folder Include="PostDeploymentScripts\DataPopulation" />
     <Folder Include="dbo\Views" />
+    <Folder Include="dbo\StoredProcedures" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Person.sql" />
@@ -69,6 +70,7 @@
     <Build Include="dbo\Tables\Company.sql" />
     <None Include="PostDeploymentScripts\DataPopulation\Person.sql" />
     <Build Include="dbo\Views\EmployeeInfo.sql" />
+    <Build Include="dbo\StoredProcedures\spInsertIntoEmployee.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SQLFundamentalsProject.publish.xml" />

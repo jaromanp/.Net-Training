@@ -17,11 +17,11 @@ BEGIN TRANSACTION
     INSERT INTO dbo.Employee(AddressId, PersonId, CompanyName, Position, EmployeeName)
     SELECT AddressId, PersonId, CompanyName, Position, EmployeeName
     FROM (VALUES
-        (2, 5, 'Google', 'Developer', 'Capitan America'),
-        (3, 4, 'Microsoft', 'QA Tester', 'Black Widow'),
-        (1, 2, 'Apple', 'UI Designer', 'Maya Perez'),
-        (2, 1, 'Google', 'Developer', NULL),
-        (4, 3, 'Tesla', 'Engineer', NULL)
+        (5, 5, 'Google', 'Developer', 'Capitan America'),
+        (6, 4, 'Microsoft', 'QA Tester', 'Black Widow'),
+        (7, 2, 'Apple', 'UI Designer', 'Maya Perez'),
+        (8, 1, 'Google', 'Developer', NULL),
+        (9, 3, 'Tesla', 'Engineer', NULL)
     ) AS v(AddressId, PersonId, CompanyName, Position, EmployeeName)
     WHERE NOT EXISTS (
         SELECT 1

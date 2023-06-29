@@ -21,9 +21,9 @@ BEGIN TRANSACTION
     )
     INSERT INTO @company(Name, AddressId)
     VALUES
-        ('Google', 2),
-        ('Microsoft', 3),
-        ('Apple', 1),
+        ('Google', 1),
+        ('Microsoft', 2),
+        ('Apple', 3),
         ('Tesla', 4)
     MERGE dbo.Company AS target
     USING (SELECT Name, AddressId FROM @company) AS source (Name, AddressId)

@@ -26,7 +26,12 @@ BEGIN TRANSACTION
         ('Bourbon Street', 'New Orleans', 'IL', '432562'),
         ('Wall Street', 'New York', 'NW', '543235'),
         ('Hollywood Boulevard', 'Los Angeles', 'CA', '352652'),
-        ('Ocean Drive', 'Miamia', 'FL', '442562')
+        ('Ocean Drive', 'Miami', 'FL', '442562'),
+        ('Avenida 9 de Julio', 'Buenos Aires', 'Argentina', '653423'),
+        ('Abbey Road', 'Camdem', 'United Kingdom', '786583'),
+        ('Lombard Street', 'San Francisco', 'CA', '345231'),
+        ('Gran Via', 'Madrid', 'Spain', '245122'),
+        ('Campos Eliseos',	'Paris', 'France', '245463')
 
     MERGE dbo.Address AS target
     USING (SELECT Street, City, State, ZipCode FROM @address) AS source (Street, City, State, ZipCode)
