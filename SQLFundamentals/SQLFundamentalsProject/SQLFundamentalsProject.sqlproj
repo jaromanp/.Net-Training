@@ -60,6 +60,7 @@
     <Folder Include="dbo\Tables" />
     <Folder Include="PostDeploymentScripts" />
     <Folder Include="PostDeploymentScripts\DataPopulation" />
+    <Folder Include="dbo\Views" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Person.sql" />
@@ -67,6 +68,7 @@
     <Build Include="dbo\Tables\Employee.sql" />
     <Build Include="dbo\Tables\Company.sql" />
     <None Include="PostDeploymentScripts\DataPopulation\Person.sql" />
+    <Build Include="dbo\Views\EmployeeInfo.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SQLFundamentalsProject.publish.xml" />
