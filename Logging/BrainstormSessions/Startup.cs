@@ -1,5 +1,7 @@
 using System;
+using System.Configuration;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using BrainstormSessions.Core.Interfaces;
 using BrainstormSessions.Core.Model;
@@ -41,6 +43,16 @@ namespace BrainstormSessions
                 .MinimumLevel.Debug()
                 .WriteTo.Console()
                 .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day)
+                .WriteTo.Email(
+                    fromEmail: "servermail@email.com",
+                    toEmail: "developer@mail.com",
+                    mailSubject: "Daily Logs",
+                    mailServer: "smtp.gmail.com",
+                    networkCredential: new NetworkCredential{
+                        UserName = "user",
+                        Password = "pass"
+                    }
+                )
                 .CreateLogger();
 
             app.UseStaticFiles();
