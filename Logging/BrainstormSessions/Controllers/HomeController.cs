@@ -47,6 +47,7 @@ namespace BrainstormSessions.Controllers
         {
             if (!ModelState.IsValid)
             {
+                Log.Warning("The provided model is Invalid:", model);
                 return BadRequest(ModelState);
             }
             else
