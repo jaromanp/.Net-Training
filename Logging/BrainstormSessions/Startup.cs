@@ -47,6 +47,8 @@ namespace BrainstormSessions
 
             app.UseRouting();
 
+            app.UseSerilogRequestLogging();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
