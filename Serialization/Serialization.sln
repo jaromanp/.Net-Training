@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binary serialization", "Binary serialization\Binary serialization.csproj", "{260B20D6-DD53-4EB3-97CE-1447F79DB912}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XML serialization", "XML serialization\XML serialization.csproj", "{0FFB7422-826F-43D6-B71C-D199803EAD31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{260B20D6-DD53-4EB3-97CE-1447F79DB912}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{260B20D6-DD53-4EB3-97CE-1447F79DB912}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{260B20D6-DD53-4EB3-97CE-1447F79DB912}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FFB7422-826F-43D6-B71C-D199803EAD31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FFB7422-826F-43D6-B71C-D199803EAD31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FFB7422-826F-43D6-B71C-D199803EAD31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FFB7422-826F-43D6-B71C-D199803EAD31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
