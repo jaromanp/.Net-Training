@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binary serialization", "Binary serialization\Binary serialization.csproj", "{260B20D6-DD53-4EB3-97CE-1447F79DB912}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinarySerialization", "Binary serialization\BinarySerialization.csproj", "{260B20D6-DD53-4EB3-97CE-1447F79DB912}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XML serialization", "XML serialization\XML serialization.csproj", "{0FFB7422-826F-43D6-B71C-D199803EAD31}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XMLSerialization", "XML serialization\XMLSerialization.csproj", "{0FFB7422-826F-43D6-B71C-D199803EAD31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSON serialization", "JSON serialization\JSON serialization.csproj", "{0EEC9256-A5E6-4AFC-8FC7-AD891A32ABFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JSONSerialization", "JSON serialization\JSONSerialization.csproj", "{0EEC9256-A5E6-4AFC-8FC7-AD891A32ABFA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Task2", "Task2\Task2.csproj", "{EDCAF8B4-0DF2-4BE0-90F7-EA70C90A781B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeepCloning", "DeepCloning\DeepCloning.csproj", "{888B0CCE-1A33-40AA-9D03-71361AC6E861}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{EDCAF8B4-0DF2-4BE0-90F7-EA70C90A781B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EDCAF8B4-0DF2-4BE0-90F7-EA70C90A781B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDCAF8B4-0DF2-4BE0-90F7-EA70C90A781B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{888B0CCE-1A33-40AA-9D03-71361AC6E861}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{888B0CCE-1A33-40AA-9D03-71361AC6E861}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{888B0CCE-1A33-40AA-9D03-71361AC6E861}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{888B0CCE-1A33-40AA-9D03-71361AC6E861}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
