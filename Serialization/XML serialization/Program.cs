@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Xml.Serialization;
 using XML_serialization;
 
