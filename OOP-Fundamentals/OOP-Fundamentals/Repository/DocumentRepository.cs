@@ -19,6 +19,7 @@ namespace OOP_Fundamentals.Repository
                 "Book" => DocumentType.Book,
                 "LocalizedBook" => DocumentType.LocalizedBook,
                 "Patent" => DocumentType.Patent,
+                "Magazine" => DocumentType.Magazine,
                 _ => throw new ArgumentException("Unsupported document type")
             };
             File.WriteAllText($"{type.ToString().ToLower()}_#{documentNumber}.json", documentJson);
@@ -27,7 +28,7 @@ namespace OOP_Fundamentals.Repository
         public IEnumerable<IDocument> SearchByDocumentNumber(string documentNumber)
         {
             List<IDocument> results = new List<IDocument>();
-            string[] documentTypes = { "book", "localizedbook", "patent" };
+            string[] documentTypes = { "book", "localizedbook", "patent", "magazine" };
 
             foreach (string documentType in documentTypes)
             {
@@ -45,6 +46,9 @@ namespace OOP_Fundamentals.Repository
                             break;
                         case "patent":
                             results.Add(JsonConvert.DeserializeObject<Patent>(content));
+                            break;
+                        case "magazine":
+                            results.Add(JsonConvert.DeserializeObject<Magazine>(content));
                             break;
                     }
                 }

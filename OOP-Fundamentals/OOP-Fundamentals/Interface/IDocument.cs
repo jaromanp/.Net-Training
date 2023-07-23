@@ -8,7 +8,8 @@ namespace OOP_Fundamentals.Interface
 {
     interface IDocument
     {
-        string Authors { get; set; }
+        string Title { get; set; }
+        DateTime DatePublished { get; set; }
         DocumentType Type { get; set; }
         string GetCardInfo();
     }

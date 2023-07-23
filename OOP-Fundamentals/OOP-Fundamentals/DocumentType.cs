@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace OOP_Fundamentals
 {
-    public enum DocumentType { Patent, Book, LocalizedBook };
+    public enum DocumentType { Patent, Book, LocalizedBook, Magazine };
 }
