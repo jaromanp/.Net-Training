@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace OOP_Fundamentals.Service
 {
-    class SearchService
+    class SearchService : ISearchService
     {
-        private readonly DocumentRepository _documentRepository;
+        private readonly IDocumentRepository _documentRepository;
 
-        public SearchService(DocumentRepository documentRepository)
+        public SearchService(IDocumentRepository documentRepository)
         {
             _documentRepository = documentRepository;
         }

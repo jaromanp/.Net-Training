@@ -4,8 +4,9 @@ using OOP_Fundamentals.Repository;
 using OOP_Fundamentals.Service;
 
 
-DocumentRepository documentRepository = new DocumentRepository();
-SearchService searchService = new SearchService(documentRepository);
+ICacheService cacheService = new CacheService();
+IDocumentRepository documentRepository = new DocumentRepository(cacheService);
+ISearchService searchService = new SearchService(documentRepository);
 
 Console.WriteLine("Cabinet Software for library");
 
@@ -27,8 +28,16 @@ for(int i = 0; i < documents.Count;  i++)
 
 var results = searchService.SearchByDocumentNumber("1");
 
-Console.WriteLine("Search results:");
+Console.WriteLine("First search results:");
 foreach (var result in results)
+{
+    Console.WriteLine(result.GetCardInfo());
+}
+
+var results2 = searchService.SearchByDocumentNumber("1");
+
+Console.WriteLine("Second search results (in cache):");
+foreach (var result in results2)
 {
     Console.WriteLine(result.GetCardInfo());
 }

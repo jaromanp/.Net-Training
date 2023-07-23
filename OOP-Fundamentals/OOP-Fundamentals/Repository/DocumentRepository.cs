@@ -4,13 +4,21 @@ using OOP_Fundamentals.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace OOP_Fundamentals.Repository
 {
-    class DocumentRepository
+    class DocumentRepository : IDocumentRepository
     {
+        private readonly ICacheService _cacheService;
+
+        public DocumentRepository(ICacheService cacheService)
+        {
+            _cacheService = cacheService;
+        }
+
         public void SaveDocument(IDocument document, string documentNumber)
         {
             string documentJson = JsonConvert.SerializeObject(document);
@@ -33,28 +41,57 @@ namespace OOP_Fundamentals.Repository
             foreach (string documentType in documentTypes)
             {
                 string filePath = $"{documentType}_#{documentNumber}.json";
+
                 if (File.Exists(filePath))
                 {
-                    string content = File.ReadAllText(filePath);
-                    switch (documentType)
+
+                    IDocument document = _cacheService.GetFromCache(filePath);
+
+                    if (document == null)
                     {
-                        case "book":
-                            results.Add(JsonConvert.DeserializeObject<Book>(content));
-                            break;
-                        case "localizedbook":
-                            results.Add(JsonConvert.DeserializeObject<LocalizedBook>(content));
-                            break;
-                        case "patent":
-                            results.Add(JsonConvert.DeserializeObject<Patent>(content));
-                            break;
-                        case "magazine":
-                            results.Add(JsonConvert.DeserializeObject<Magazine>(content));
-                            break;
+
+                        string content = File.ReadAllText(filePath);
+
+                        switch (documentType)
+                        {
+                            case "book":
+                                document = JsonConvert.DeserializeObject<Book>(content);
+                                break;
+                            case "localizedbook":
+                                document = JsonConvert.DeserializeObject<LocalizedBook>(content);
+                                break;
+                            case "patent":
+                                document = JsonConvert.DeserializeObject<Patent>(content);
+                                break;
+                            case "magazine":
+                                document = JsonConvert.DeserializeObject<Magazine>(content);
+                                break;
+                        }
+
+                        TimeSpan cacheDuration = GetCacheDuration(document.GetType().Name);
+                        if (cacheDuration > TimeSpan.Zero)
+                        {
+                            _cacheService.AddToCache(filePath, document, cacheDuration);
+                        }
                     }
+
+                    results.Add(document);
                 }
             }
 
             return results;
+        }
+
+        private TimeSpan GetCacheDuration(string documentType)
+        {
+            return documentType switch
+            {
+                "Book" => TimeSpan.FromHours(2),
+                "LocalizedBook" => TimeSpan.FromMinutes(5),
+                "Patent" => TimeSpan.FromDays(1),
+                "Magazine" => TimeSpan.Zero,
+                _ => TimeSpan.Zero,
+            };
         }
     }
 }
