@@ -9,8 +9,8 @@ namespace Task1
     {
         public static IEnumerable<Customer> Linq1(IEnumerable<Customer> customers, decimal limit)
         {
-            return customers.Where( c => c.Orders.Sum(o => o.Total) > limit);
-                    
+            return customers.Where(c => c.Orders.Sum(o => o.Total) > limit);
+
         }
 
         public static IEnumerable<(Customer customer, IEnumerable<Supplier> suppliers)> Linq2(
@@ -30,7 +30,7 @@ namespace Task1
             IEnumerable<Supplier> suppliers
         )
         {
-            var result = customers.GroupJoin(suppliers, c => new { c.City, c.Country }, s => new { s.City, s.Country}, (c, s) => (customer: c, suppliers: s));
+            var result = customers.GroupJoin(suppliers, c => new { c.City, c.Country }, s => new { s.City, s.Country }, (c, s) => (customer: c, suppliers: s));
 
             return result;
         }
@@ -63,7 +63,7 @@ namespace Task1
 
         public static IEnumerable<Customer> Linq6(IEnumerable<Customer> customers)
         {
-            return customers.Where(c => int.TryParse(c.PostalCode, out int num) == false || string.IsNullOrEmpty(c.Region) || !c.Phone.Contains('(') || !c.Phone.Contains(')'));                            
+            return customers.Where(c => int.TryParse(c.PostalCode, out int num) == false || string.IsNullOrEmpty(c.Region) || !c.Phone.Contains('(') || !c.Phone.Contains(')'));
         }
 
         public static IEnumerable<Linq7CategoryGroup> Linq7(IEnumerable<Product> products)
@@ -86,11 +86,11 @@ namespace Task1
                             Category = categoryGroup.Key,
                             UnitsInStockGroup =
                                 from product in categoryGroup
-                                group product by product.UnitsInStock > 0 into availabilityGroup
+                                group product by product.UnitsInStock into availabilityGroup
                                 orderby availabilityGroup.Key descending
                                 select new Linq7UnitsInStockGroup
                                 {
-                                    UnitsInStock = availabilityGroup.Key ? 1 : 0,
+                                    UnitsInStock = availabilityGroup.Key,
                                     Prices = from product in availabilityGroup
                                              orderby product.UnitPrice ascending
                                              select product.UnitPrice
@@ -124,13 +124,13 @@ namespace Task1
         )
         {
             var result = customers.GroupBy(c => c.City)
-                                  .Select(g => new
-                                  {
-                                      City = g.Key,
-                                      AvgProfitability = g.Average(c => c.Orders.Sum(o => o.Total)),
-                                      AvgRate = g.Average(c => c.Orders.Length / g.Count())
-                                  })
-                                  .Select(g => (g.City, Convert.ToInt32(Math.Round(g.AvgProfitability)), (int)g.AvgRate));
+                          .Select(g => new
+                          {
+                              City = g.Key,
+                              AvgProfitability = g.Average(c => c.Orders.Sum(o => o.Total)),
+                              AvgRate = g.Average(c => c.Orders.Length)
+                          })
+                          .Select(g => (g.City, Convert.ToInt32(Math.Round(g.AvgProfitability)), (int)Math.Round(g.AvgRate)));
             return result;
         }
 
@@ -138,7 +138,7 @@ namespace Task1
         {
             var countries = suppliers.Select(s => s.Country).Distinct().OrderBy(c => c.Length).ThenBy(c => c);
 
-            return string.Join("", countries);          
+            return string.Join("", countries);
         }
     }
 }
