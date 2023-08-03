@@ -172,7 +172,7 @@ namespace ADO.NET.Repository
                 await connection.OpenAsync();
                 using (SqlTransaction transaction = connection.BeginTransaction())
                 {
-                    using (SqlCommand command = new SqlCommand("dbo.DeleteOrders", connection, transaction))
+                    using (SqlCommand command = new SqlCommand("dbo.sp_DeleteOrders", connection, transaction))
                     {
                         command.CommandType = CommandType.StoredProcedure;
                         command.Parameters.AddWithValue("@Month", (object)month ?? DBNull.Value);
