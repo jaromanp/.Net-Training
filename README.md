@@ -19,3 +19,9 @@ Functional requirements:
 
 ### ⚠️ Please execute provided SQL Files before running unit tests
 ### ⚠️ Connection string for tests can be changed at appsettings.json
+
+## For Entity:
+
+### ⚠️ Please execute provided SQL Files before running unit tests only DB Creation
+### ⚠️ Connection string is in EntityDatabaseContext 
+### ⚠️ Requirement 4 and 5 don't use store procedure, was replaced with LinQ filtering
