@@ -1,5 +1,5 @@
 # .Net Training 
-## ADO.NET Fundamentals
+## ORM Fundamentals
 Task
 Database scheme: 
 
@@ -14,6 +14,8 @@ Functional requirements:
 - Ability to fetch all products. 
 - Ability to fetch orders (consider filtration by month, status, year or specific product, use stored procedure). 
 - Ability to delete orders in bulk (on the same conditions as in item 4). 
+
+## For Dapper:
 
 ### ⚠️ Please execute provided SQL Files before running unit tests
 ### ⚠️ Connection string for tests can be changed at appsettings.json
