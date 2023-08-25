@@ -24,11 +24,19 @@ namespace Web_API.Controllers
 
         // GET: api/Products
         [HttpGet]
-        public IEnumerable<ProductDto> GetProducts()
+        public IEnumerable<ProductDto> GetProducts(int pageNumber = 0, int pageSize = 10, int? categoryId = null)
         {
             var productList = new List<ProductDto>();
 
-            foreach (var product in _context.Products.ToList())
+            var products = _context.Products.AsQueryable();
+            if (categoryId != null)
+            {
+                products = products.Where(p => p.CategoryId == categoryId);
+            }
+
+            products = products.Skip(pageNumber * pageSize).Take(pageSize);
+
+            foreach (var product in products.ToList())
             {
                 productList.Add(new ProductDto
                 {
@@ -46,6 +54,7 @@ namespace Web_API.Controllers
             }
             return productList;
         }
+
 
         // GET: api/Products/5
         [HttpGet("{id}")]
